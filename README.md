@@ -7,10 +7,6 @@ ads are removed too.
 
 100% local and private — no servers, no accounts, no tracking.
 
-<p align="center">
-  <img src="docs/screenshots/home-feed.png" alt="A YouTube homepage filtered down to only AI/ML videos" width="900">
-</p>
-
 ---
 
 ## Features
@@ -33,20 +29,6 @@ ads are removed too.
 - **Never blanks your feed by accident** — with no interests, or the master
   switch off, YouTube is untouched. If a page filters down to nothing, a friendly
   card offers *Add interests / Loosen matching / Show hidden*.
-
-## Screenshots
-
-**Pick your interests (first‑run wizard):**
-
-<p align="center">
-  <img src="docs/screenshots/onboarding.png" alt="Onboarding wizard with selectable interest packs" width="850">
-</p>
-
-**Manage interests anytime (settings):**
-
-<p align="center">
-  <img src="docs/screenshots/interest-packs.png" alt="Settings page showing one-click interest packs" width="850">
-</p>
 
 ## Install (load unpacked)
 
