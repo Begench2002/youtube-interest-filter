@@ -1,0 +1,14 @@
+{
+  "name": "youtube-interest-filter",
+  "version": "1.0.0",
+  "description": "Chrome MV3 extension that shows only YouTube videos matching your interest keywords and hides everything else.",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "happy-dom": "^20.10.6",
+    "vitest": "^2.1.8"
+  }
+}

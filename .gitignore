@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Local tooling / scratch
+.claude/
+
+# macOS
+.DS_Store
+
+# Logs / misc
+*.log
+npm-debug.log*
+
+# Editors
+.vscode/
+.idea/
+
+# Ignore all Markdown EXCEPT the public README
+*.md
+!README.md

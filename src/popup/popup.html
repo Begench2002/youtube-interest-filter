@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>YouTube Interest Filter</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="pop">
+      <header class="phead">
+        <h1>Interest Filter</h1>
+      </header>
+
+      <label class="row switch">
+        <span><strong>Filtering</strong></span>
+        <input type="checkbox" id="masterEnabled" aria-label="Enable filtering" />
+      </label>
+
+      <div class="counts" id="counts">
+        <div class="count">
+          <span class="num" id="shownNum">—</span>
+          <span class="lbl">shown</span>
+        </div>
+        <div class="count">
+          <span class="num" id="hiddenNum">—</span>
+          <span class="lbl">filtered</span>
+        </div>
+      </div>
+      <p class="note" id="note" role="status" aria-live="polite"></p>
+
+      <label class="row switch">
+        <span>Hide all Shorts</span>
+        <input type="checkbox" id="hideAllShorts" aria-label="Hide all Shorts" />
+      </label>
+
+      <label class="row switch">
+        <span>Show hidden (dimmed)</span>
+        <input type="checkbox" id="revealHidden" aria-label="Show hidden videos dimmed instead of removed" />
+      </label>
+
+      <p class="summary" id="summary"></p>
+      <p class="tip">Tip: right-click a video to always-show or block its channel.</p>
+
+      <button id="openOptions" class="wide-btn">Manage interests…</button>
+    </div>
+
+    <script src="../shared/defaults.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+/*
+ * content.css — injected on YouTube. Hiding is class-based (not node removal) so
+ * it is fully reversible when keywords change, the master toggle flips, or the
+ * user turns on "show hidden".
+ */
+
+/* A non-matching video: removed from layout entirely. */
+.ytif-hidden {
+  display: none !important;
+}
+
+/* Pre-hide: while filtering is active, cards that haven't been classified yet
+   (no data-ytif-sig stamp) are hidden by default, so newly-loaded cards never
+   flash into view and then get removed as you scroll. Once a card is classified,
+   it gets the stamp and reappears (keepers) or keeps .ytif-hidden (non-matches).
+   Gated by html.ytif-prehide so it's inactive when nothing is being filtered. */
+html.ytif-prehide ytd-rich-item-renderer:not([data-ytif-sig]),
+html.ytif-prehide ytd-video-renderer:not([data-ytif-sig]),
+html.ytif-prehide ytd-grid-video-renderer:not([data-ytif-sig]),
+html.ytif-prehide yt-lockup-view-model:not([data-ytif-sig]),
+html.ytif-prehide ytd-compact-video-renderer:not([data-ytif-sig]) {
+  display: none !important;
+}
+
+/* "Show hidden" mode: keep the slot but dim it so the layout doesn't shift.
+   Hovering brings it back to full so you can still click through. */
+.ytif-dimmed {
+  opacity: 0.28 !important;
+  filter: grayscale(70%) !important;
+  transition: opacity 0.15s ease, filter 0.15s ease;
+}
+.ytif-dimmed:hover {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Empty-state guidance shown when filtering hid everything on a feed page. */
+.ytif-empty {
+  margin: 24px auto !important;
+  max-width: 560px !important;
+  padding: 28px 24px !important;
+  background: #1c1c1c !important;
+  border: 1px solid #383838 !important;
+  border-radius: 14px !important;
+  text-align: center !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+.ytif-empty-title { color: #f1f1f1 !important; font-size: 18px !important; font-weight: 700 !important; }
+.ytif-empty-sub { color: #aaa !important; font-size: 14px !important; margin: 8px 0 16px !important; }
+.ytif-empty-actions { display: flex !important; gap: 10px !important; justify-content: center !important; flex-wrap: wrap !important; }
+.ytif-empty-actions button {
+  background: #3ea6ff !important; color: #06121f !important;
+  border: none !important; border-radius: 999px !important;
+  padding: 9px 16px !important; font-size: 13px !important; font-weight: 700 !important;
+  cursor: pointer !important;
+}
+.ytif-empty-actions button:hover { filter: brightness(1.08) !important; }
+
+/* Quick-add confirmation toast (right-click add/block/always-show). */
+.ytif-toast {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  max-width: 360px !important;
+  padding: 12px 16px !important;
+  background: #1c1c1c !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #3ea6ff !important;
+  border-radius: 10px !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5) !important;
+  font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+.ytif-toast-undo {
+  flex: 0 0 auto !important;
+  background: #3ea6ff !important;
+  color: #06121f !important;
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 5px 12px !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+}
+.ytif-toast-undo:hover {
+  filter: brightness(1.08) !important;
+}

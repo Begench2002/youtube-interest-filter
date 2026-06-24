@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YouTube Interest Filter — Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="head">
+        <h1>YouTube Interest Filter</h1>
+        <p class="sub">Show only the videos you care about. Everything else is hidden.</p>
+      </header>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+
+      <section class="card">
+        <label class="switch-row">
+          <span>
+            <strong>Filtering enabled</strong>
+            <small>Master switch. When off, YouTube is untouched.</small>
+          </span>
+          <input type="checkbox" id="masterEnabled" aria-label="Enable filtering" />
+        </label>
+      </section>
+
+      <section class="card">
+        <h2>Interest packs</h2>
+        <p class="hint">
+          Click a topic to add a ready-made set of keywords. Pick as many as you
+          like — you can fine-tune the list below afterwards.
+        </p>
+        <div id="packGrid" class="pack-grid"></div>
+      </section>
+
+      <section class="card">
+        <h2>Your interests</h2>
+        <p class="hint">
+          One keyword or phrase per line <strong>or comma-separated</strong>. A
+          video is kept if its <strong>title or channel</strong> matches any of
+          these. Leave empty to show everything.
+        </p>
+        <textarea id="interests" rows="8" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="formula 1&#10;machine learning&#10;rust programming&#10;veritasium"></textarea>
+        <div id="interestsHint" class="counthint"></div>
+      </section>
+
+      <details class="card advanced">
+        <summary>Advanced settings</summary>
+
+        <div class="advanced-body">
+          <h3>Block words</h3>
+          <p class="hint">
+            One per line or comma-separated. A video matching any of these is
+            <strong>always hidden</strong>, even if it matches an interest.
+          </p>
+          <textarea id="blockWords" rows="3" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="clickbait&#10;reaction&#10;drama"></textarea>
+          <div id="blockHint" class="counthint"></div>
+
+          <h3 class="top-gap">Always-show channels</h3>
+          <p class="hint">
+            One channel name per line or comma-separated. <strong>Every</strong>
+            video from these channels is shown — even if its title doesn't match
+            an interest. (A block word still hides it.)
+          </p>
+          <textarea id="allowChannels" rows="3" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="Two Minute Papers&#10;Yannic Kilcher&#10;3Blue1Brown"></textarea>
+          <div id="allowHint" class="counthint"></div>
+
+          <h3 class="top-gap">Matching</h3>
+          <fieldset class="radios">
+            <legend>How should keywords match?</legend>
+            <label>
+              <input type="radio" name="matchMode" value="smart" />
+              <span><strong>Smart</strong> — matches plurals/word forms (“transformer” → “transformers”). (Recommended)</span>
+            </label>
+            <label>
+              <input type="radio" name="matchMode" value="word" />
+              <span><strong>Strict</strong> — exact whole word only.</span>
+            </label>
+            <label>
+              <input type="radio" name="matchMode" value="loose" />
+              <span><strong>Loose</strong> — matches anything containing the letters (broadest).</span>
+            </label>
+          </fieldset>
+          <label class="check-row">
+            <input type="checkbox" id="normalizeDiacritics" />
+            <span>Ignore accents (“café” matches “cafe”)</span>
+          </label>
+
+          <h3 class="top-gap">Where to filter</h3>
+          <div class="grid">
+            <label class="check-row"><input type="checkbox" id="surface-home" /><span>Homepage feed</span></label>
+            <label class="check-row"><input type="checkbox" id="surface-search" /><span>Search results</span></label>
+            <label class="check-row"><input type="checkbox" id="surface-sidebar" /><span>Watch-page sidebar</span></label>
+            <label class="check-row"><input type="checkbox" id="surface-subscriptions" /><span>Subscriptions</span></label>
+          </div>
+          <label class="check-row top-gap">
+            <input type="checkbox" id="hideAllShorts" />
+            <span><strong>Hide all Shorts</strong> entirely (shelves, items, and the Shorts nav button)</span>
+          </label>
+
+          <div class="row-between top-gap">
+            <div class="io">
+              <button id="exportBtn" class="btn">Export settings</button>
+              <button id="importBtn" class="btn">Import settings</button>
+              <input type="file" id="importFile" accept="application/json" hidden />
+            </div>
+            <button id="resetBtn" class="btn btn-danger">Reset to defaults</button>
+          </div>
+        </div>
+      </details>
+
+      <footer class="foot">
+        <small>All settings are stored locally on this device. The extension makes no network requests.</small>
+      </footer>
+    </main>
+
+    <script src="../shared/matcher.js"></script>
+    <script src="../shared/defaults.js"></script>
+    <script src="../data/interest-packs.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

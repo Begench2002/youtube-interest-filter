@@ -1,0 +1,72 @@
+:root {
+  --bg: #0f0f0f;
+  --card: #1c1c1c;
+  --card-2: #272727;
+  --text: #f1f1f1;
+  --muted: #aaaaaa;
+  --accent: #3ea6ff;
+  --border: #383838;
+  --ok: #4cc97a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 500px at 50% -10%, #1a1a1a, var(--bg));
+  color: var(--text);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+
+.hero { text-align: center; margin-bottom: 28px; }
+.logo {
+  width: 56px; height: 56px; margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  background: #cc0000; color: #fff; border-radius: 14px; font-size: 26px;
+}
+.hero h1 { margin: 0 0 8px; font-size: 30px; }
+.hero h1 em { color: var(--accent); font-style: normal; }
+.hero .sub { margin: 0 auto; max-width: 560px; color: var(--muted); font-size: 16px; }
+
+.picker-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.picker-head h2 { margin: 0; font-size: 18px; }
+.counter { color: var(--accent); font-size: 13px; font-weight: 600; }
+
+.pack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.pack {
+  text-align: left;
+  display: flex; flex-direction: column; gap: 4px;
+  background: var(--card); color: var(--text);
+  border: 2px solid var(--border); border-radius: 14px;
+  padding: 16px; cursor: pointer;
+  transition: border-color 0.12s, background 0.12s, transform 0.06s;
+}
+.pack:hover { border-color: #555; }
+.pack:active { transform: scale(0.99); }
+.pack.on { border-color: var(--accent); background: #16242f; }
+.pack-emoji { font-size: 24px; }
+.pack-name { font-weight: 700; font-size: 15px; }
+.pack-desc { color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+.actions { text-align: center; margin-top: 32px; }
+.btn {
+  border: none; border-radius: 999px; cursor: pointer;
+  font-size: 15px; font-weight: 700; padding: 13px 26px;
+}
+.btn.primary { background: var(--accent); color: #06121f; }
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.ghost {
+  background: transparent; color: var(--muted);
+  font-weight: 500; font-size: 13px; margin-left: 8px;
+}
+.btn.ghost:hover { color: var(--text); }
+.fineprint { margin: 18px 0 0; color: var(--muted); font-size: 12px; }
