@@ -20,7 +20,6 @@ const DEFAULT_SETTINGS = {
   hideAllShorts: true, // remove all Shorts shelves + items
   surfaces: {
     home: true,
-    search: true,
     sidebar: true,
     subscriptions: true,
   },

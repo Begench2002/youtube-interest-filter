@@ -17,7 +17,6 @@
     normalizeDiacritics: el('normalizeDiacritics'),
     hideAllShorts: el('hideAllShorts'),
     surfaceHome: el('surface-home'),
-    surfaceSearch: el('surface-search'),
     surfaceSidebar: el('surface-sidebar'),
     surfaceSubscriptions: el('surface-subscriptions'),
   };
@@ -51,7 +50,6 @@
       hideAllShorts: fields.hideAllShorts.checked,
       surfaces: {
         home: fields.surfaceHome.checked,
-        search: fields.surfaceSearch.checked,
         sidebar: fields.surfaceSidebar.checked,
         subscriptions: fields.surfaceSubscriptions.checked,
       },
@@ -71,7 +69,6 @@
     fields.normalizeDiacritics.checked = s.normalizeDiacritics;
     fields.hideAllShorts.checked = s.hideAllShorts;
     fields.surfaceHome.checked = s.surfaces.home;
-    fields.surfaceSearch.checked = s.surfaces.search;
     fields.surfaceSidebar.checked = s.surfaces.sidebar;
     fields.surfaceSubscriptions.checked = s.surfaces.subscriptions;
     const radio = document.querySelector(
@@ -282,7 +279,6 @@
       fields.normalizeDiacritics,
       fields.hideAllShorts,
       fields.surfaceHome,
-      fields.surfaceSearch,
       fields.surfaceSidebar,
       fields.surfaceSubscriptions,
     ].forEach((node) => node.addEventListener('change', scheduleSave));

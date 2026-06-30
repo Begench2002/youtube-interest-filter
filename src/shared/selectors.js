@@ -29,18 +29,9 @@ const SURFACES = [
       'ytd-video-renderer',
     ],
   },
-  {
-    key: 'search',
-    test: (loc) => loc.pathname === '/results',
-    // Add lockups so shelf results ("People also watched", "For you", disguised
-    // Shorts) are filtered too — otherwise they leak in unfiltered.
-    items: [
-      'ytd-video-renderer',
-      'ytd-grid-video-renderer',
-      'ytd-rich-item-renderer',
-      'yt-lockup-view-model',
-    ],
-  },
+  // NOTE: search results (/results) are intentionally NOT a filtered surface —
+  // when you search for something specific you want all the results, not your
+  // interest filter narrowing them.
   {
     key: 'subscriptions',
     test: (loc) => loc.pathname.startsWith('/feed/subscriptions'),

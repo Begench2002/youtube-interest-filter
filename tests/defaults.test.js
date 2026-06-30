@@ -16,7 +16,7 @@ describe('withDefaults() — base behavior', () => {
     expect(s.revealHidden).toBe(false);
     expect(s.onboarded).toBe(false);
     expect(s.appliedPacks).toEqual([]);
-    expect(s.surfaces).toEqual({ home: true, search: true, sidebar: true, subscriptions: true });
+    expect(s.surfaces).toEqual({ home: true, sidebar: true, subscriptions: true });
   });
 
   it('returns defaults when given a non-object (e.g. a string)', () => {
@@ -68,7 +68,6 @@ describe('withDefaults() — surfaces merge', () => {
   it('merges a partial surfaces object over defaults', () => {
     expect(withDefaults({ surfaces: { home: false } }).surfaces).toEqual({
       home: false,
-      search: true,
       sidebar: true,
       subscriptions: true,
     });
@@ -78,9 +77,9 @@ describe('withDefaults() — surfaces merge', () => {
     expect(withDefaults({ surfaces: ['x'] }).surfaces).toEqual(DEFAULT_SETTINGS.surfaces);
   });
   it('treats an explicit-false surface as off and anything else as on', () => {
-    const s = withDefaults({ surfaces: { home: false, search: 0, sidebar: 'x' } });
+    const s = withDefaults({ surfaces: { home: false, subscriptions: 0, sidebar: 'x' } });
     expect(s.surfaces.home).toBe(false);
-    expect(s.surfaces.search).toBe(true); // only strict false disables
+    expect(s.surfaces.subscriptions).toBe(true); // only strict false disables
     expect(s.surfaces.sidebar).toBe(true);
   });
 });

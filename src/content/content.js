@@ -26,7 +26,7 @@
 
   // Bumped whenever the content script changes — lets tooling verify (from the
   // page) which version is actually live after a reload.
-  const VERSION = '2026.06.24-clean';
+  const VERSION = '2026.06.29-no-search-filter';
   const HIDDEN_CLASS = 'ytif-hidden';
   const DIMMED_CLASS = 'ytif-dimmed';
   const STAMP = 'data-ytif-sig';

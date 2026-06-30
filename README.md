@@ -1,9 +1,10 @@
 # YouTube Interest Filter
 
 Turn YouTube into an **interest‑only feed**. Pick the topics you care about and the
-extension **hides every video that doesn't match** — across the homepage, search,
-the watch‑page sidebar, subscriptions, and Trending/Explore. Shorts and in‑feed
-ads are removed too.
+extension **hides every video that doesn't match** — across the homepage,
+Trending/Explore, the watch‑page sidebar, and subscriptions. Shorts and in‑feed
+ads are removed too. **Search results are never filtered** — when you search for
+something specific, you get all the results.
 
 100% local and private — no servers, no accounts, no tracking.
 
