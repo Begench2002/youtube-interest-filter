@@ -13,12 +13,21 @@
    (no data-ytif-sig stamp) are hidden by default, so newly-loaded cards never
    flash into view and then get removed as you scroll. Once a card is classified,
    it gets the stamp and reappears (keepers) or keeps .ytif-hidden (non-matches).
-   Gated by html.ytif-prehide so it's inactive when nothing is being filtered. */
-html.ytif-prehide ytd-rich-item-renderer:not([data-ytif-sig]),
-html.ytif-prehide ytd-video-renderer:not([data-ytif-sig]),
-html.ytif-prehide ytd-grid-video-renderer:not([data-ytif-sig]),
-html.ytif-prehide yt-lockup-view-model:not([data-ytif-sig]),
-html.ytif-prehide ytd-compact-video-renderer:not([data-ytif-sig]) {
+   Gated by html.ytif-prehide so it's inactive when nothing is being filtered.
+
+   SCOPED to the filtered surfaces only: ytd-browse (home, Trending/Explore,
+   subscriptions) and ytd-watch-flexy (the watch-page sidebar). Search results
+   live in ytd-search — which is NEVER inside either ancestor — so this rule can
+   never pre-hide a search card, even during the brief SPA transition from a
+   filtered page to /results before the script clears the prehide class. This is
+   what guarantees the interest filter does not touch search at all. */
+html.ytif-prehide :is(ytd-browse, ytd-watch-flexy) :is(
+    ytd-rich-item-renderer,
+    ytd-video-renderer,
+    ytd-grid-video-renderer,
+    yt-lockup-view-model,
+    ytd-compact-video-renderer
+  ):not([data-ytif-sig]) {
   display: none !important;
 }
 

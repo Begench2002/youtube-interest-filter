@@ -73,7 +73,3 @@ The matching logic (`src/shared/`) and DOM extraction are covered by unit and
 integration tests, including tests that run the real selectors against
 representative YouTube card markup. If YouTube changes its markup and filtering
 stops working, the fix is almost always in `src/shared/selectors.js`.
-
-## License
-
-MIT — see [LICENSE](LICENSE).

@@ -26,7 +26,7 @@
 
   // Bumped whenever the content script changes — lets tooling verify (from the
   // page) which version is actually live after a reload.
-  const VERSION = '2026.06.29-no-search-filter';
+  const VERSION = '2026.06.29-search-untouched';
   const HIDDEN_CLASS = 'ytif-hidden';
   const DIMMED_CLASS = 'ytif-dimmed';
   const STAMP = 'data-ytif-sig';
@@ -258,6 +258,26 @@
   // Reveal everything and stop hiding — used when selectors look broken so we
   // never leave the user with a silently blank feed.
   function failOpen() {
+    clearAllMarks();
+  }
+
+  // The search results page (/results) must be COMPLETELY untouched: when the
+  // user searches for something specific they want every result, never the
+  // interest filter narrowing them. This is a hard guard, independent of surface
+  // detection, so NOTHING runs on search — no pre-hide, no card hiding, no
+  // Shorts/ad sweeps. It also clears any classes left on DOM nodes that YouTube
+  // recycled from a previous (filtered) page, and drops the lingering prehide
+  // class immediately so there's no flash. (The prehide CSS is also scoped away
+  // from ytd-search, so the class can't visibly hide search cards anyway.)
+  function isSearchPage() {
+    try {
+      return location.pathname === '/results';
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function clearAllMarks() {
     try {
       document.documentElement.classList.remove('ytif-prehide');
       document
@@ -271,6 +291,13 @@
   function applyAll(full) {
     try {
       counts = { shown: 0, hidden: 0, dimmed: 0, noText: 0 };
+
+      // Hard stop on search: leave the page exactly as YouTube rendered it.
+      if (isSearchPage()) {
+        clearAllMarks();
+        ensureEmptyState(false);
+        return;
+      }
 
       const surface = currentSurface();
       const filteringOn =
